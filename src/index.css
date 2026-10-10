@@ -1856,6 +1856,95 @@ a.project-action:hover {
   font-family: var(--font-mono);
 }
 
+.oss-block {
+  margin-top: 96px;
+}
+
+.oss-heading h3 {
+  max-width: 820px;
+  color: var(--ink);
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  font-weight: 480;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.oss-summary {
+  margin-top: 12px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+}
+
+.oss-repos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+  margin-top: 36px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.oss-repo {
+  min-width: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.oss-repo h4 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.oss-repo h4 a {
+  color: var(--accent-bright);
+}
+
+.oss-repo > p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.oss-repo ul {
+  margin-top: 16px;
+}
+
+.oss-repo li a {
+  display: grid;
+  grid-template-columns: 58px 56px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.oss-repo li a:hover .oss-title,
+.oss-repo li a:focus-visible .oss-title {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.oss-state,
+.oss-number {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+}
+
+.oss-state-merged {
+  color: var(--accent);
+}
+
+.oss-state-open,
+.oss-state-closed,
+.oss-number {
+  color: var(--muted);
+}
+
 /* ---------- Contact ---------- */
 .contact-section {
   padding: 140px 0;
@@ -2354,6 +2443,14 @@ a.project-action:hover {
 
   .project-action {
     display: none;
+  }
+
+  .oss-repos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .oss-repo li a {
+    grid-template-columns: 50px 50px minmax(0, 1fr);
   }
 
   .project-copy h3 {

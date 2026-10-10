@@ -248,6 +248,51 @@ export const PROJECTS = [
   },
 ]
 
+// Upstream pull requests, verified against GitHub on 2026-10-10.
+// Update each state as PRs merge or close.
+export const OSS_CONTRIBUTIONS = [
+  {
+    repo: 'duckdb/duckdb',
+    description: 'Crash, type, and validation fixes in the DuckDB engine: aggregate states, JSON and VARIANT nesting limits, casts, and prepared statements.',
+    prs: [
+      { number: 26428, title: 'Fix enum_range_boundary crash on an untyped NULL', state: 'merged' },
+      { number: 26511, title: 'Validate counts when importing an approx_top_k state', state: 'merged' },
+      { number: 26512, title: 'Type-check the ORDER BY field of to_aggregate_state', state: 'merged' },
+      { number: 26513, title: 'Keep the DECIMAL type in approx_quantile results', state: 'open' },
+      { number: 26602, title: 'Reject a sign followed only by whitespace in integer casts', state: 'open' },
+      { number: 26603, title: 'Bound the nesting depth json_structure follows', state: 'open' },
+      { number: 26604, title: 'Bound the nesting depth of a json_transform structure', state: 'open' },
+      { number: 26605, title: 'Bound the nesting depth variant_contains follows', state: 'open' },
+      { number: 26606, title: 'Rebind a prepared currval() when its sequence changes', state: 'open' },
+      { number: 26607, title: 'Limit how deep schemas can be nested', state: 'open' },
+      { number: 26608, title: 'Keep casts when rewriting a list comprehension', state: 'open' },
+    ],
+  },
+  {
+    repo: 'duckdb/ducklake',
+    description: 'Inlined-data and schema-version fixes in the DuckLake lakehouse format.',
+    prs: [
+      { number: 1551, title: 'Skip the inlined-data stats merge when a column is missing', state: 'closed' },
+      { number: 1552, title: 'Map Parquet VARIANT groups in ducklake_add_data_files', state: 'closed' },
+      { number: 1569, title: "Resolve an inlined table's schema version through the snapshot table", state: 'closed' },
+    ],
+  },
+  {
+    repo: 'duckdb/pg_duckdb',
+    description: 'Query translation fixes in the Postgres extension that runs queries on DuckDB.',
+    prs: [
+      { number: 1086, title: 'Translate the POSIX regex operators to regexp_matches()', state: 'open' },
+      { number: 1087, title: 'Convert the minimum hugeint to numeric without overflowing', state: 'open' },
+      { number: 1088, title: 'Label float4 constants in pushed-down filters', state: 'open' },
+    ],
+  },
+  {
+    repo: 'ibis-project/ibis',
+    description: 'DuckDB backend fix for the Python dataframe library.',
+    prs: [{ number: 12140, title: 'Parse the CRS that DuckDB spatial >= 1.5 reports', state: 'open' }],
+  },
+]
+
 export const EDUCATION = [
   {
     degree: 'M.S. Computer Science',

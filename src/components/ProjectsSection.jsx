@@ -1,4 +1,4 @@
-import { PROFILE, PROJECTS } from '../data/portfolio'
+import { OSS_CONTRIBUTIONS, PROFILE, PROJECTS } from '../data/portfolio'
 
 function ArrowUpRight() {
   return (
@@ -9,6 +9,11 @@ function ArrowUpRight() {
 }
 
 export function ProjectsSection() {
+  const allPrs = OSS_CONTRIBUTIONS.flatMap((group) => group.prs)
+  const mergedCount = allPrs.filter((pr) => pr.state === 'merged').length
+  const openCount = allPrs.filter((pr) => pr.state === 'open').length
+  const closedCount = allPrs.filter((pr) => pr.state === 'closed').length
+
   return (
     <section id="projects" className="section projects-section" aria-labelledby="projects-heading">
       <div className="section-shell">
@@ -53,6 +58,45 @@ export function ProjectsSection() {
               )}
             </article>
           ))}
+        </div>
+
+        <div className="oss-block fade-up" aria-labelledby="oss-heading">
+          <div className="oss-heading">
+            <p className="section-kicker">Upstream open source</p>
+            <h3 id="oss-heading">Fixes sent to DuckDB, DuckLake, pg_duckdb, and Ibis.</h3>
+            <p className="oss-summary">
+              {mergedCount} merged, {openCount} open
+              {closedCount > 0 ? `, ${closedCount} closed` : ''} across {OSS_CONTRIBUTIONS.length}{' '}
+              repositories.
+            </p>
+          </div>
+          <div className="oss-repos">
+            {OSS_CONTRIBUTIONS.map((group) => (
+              <article className="oss-repo" key={group.repo}>
+                <h4>
+                  <a href={`https://github.com/${group.repo}`} target="_blank" rel="noopener noreferrer">
+                    {group.repo}
+                  </a>
+                </h4>
+                <p>{group.description}</p>
+                <ul>
+                  {group.prs.map((pr) => (
+                    <li key={pr.number}>
+                      <a
+                        href={`https://github.com/${group.repo}/pull/${pr.number}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className={`oss-state oss-state-${pr.state}`}>{pr.state}</span>
+                        <span className="oss-number">#{pr.number}</span>
+                        <span className="oss-title">{pr.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
